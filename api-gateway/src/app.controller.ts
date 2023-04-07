@@ -7,7 +7,7 @@ export class AppController {
     constructor(private readonly appService: AppService) {}
 
     @Post()
-    async createOrder(@Body() createOrderData: ICreateOrderRequest) {
-        await this.appService.createOrder(createOrderData);
+    createOrder(@Body() createOrderData: ICreateOrderRequest) {
+        this.appService.createOrder(createOrderData);
     }
 }
