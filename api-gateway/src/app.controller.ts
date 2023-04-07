@@ -1,12 +1,13 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
+import { ICreateOrderRequest } from './create-order-request.dto';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+    constructor(private readonly appService: AppService) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+    @Post()
+    async createOrder(@Body() createOrderData: ICreateOrderRequest) {
+        await this.appService.createOrder(createOrderData);
+    }
 }
